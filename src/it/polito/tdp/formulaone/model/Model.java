@@ -122,6 +122,10 @@ public class Model {
 	private int tassoSconfitta (Set <Driver> parziale){
 		int tasso = 0;
 		for( DefaultWeightedEdge e : this.grafo.edgeSet()){
+			// Considero tutti gli archi del grafo e
+			// se parziale NON CONTIENE IL SOURCE dell'arco MA CONTIENE il target
+			// significa che si tratta di un arco entrante in uno dei drivers di parziale
+			// e gli archi entranti corrispondono alle sconfitte
 			if( ! parziale.contains(grafo.getEdgeSource(e)) && parziale.contains(grafo.getEdgeTarget(e))) {
 				tasso += grafo.getEdgeWeight(e);
 			}
